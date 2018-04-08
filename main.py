@@ -18,4 +18,6 @@ if __name__ == "__main__":
         exit()
     mStock = MyStock(str(sys.argv[1]), datetime.date.today())
     mStock.InitialData()
-    mStock.PandasCandlestickOHLC(['ma5', 'ma10', 'ma20'])
+    mStock.PandasCandlestickOHLC(MAList = ['ma5', 'ma10', 'ma20'], MVList = ['mv5', 'mv10', 'mv20'])
+    mStock.BestFourPoint()
+    print(mStock.Result)
