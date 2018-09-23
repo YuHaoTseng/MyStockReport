@@ -11,13 +11,14 @@ ch.setFormatter(formatter)
 logger.addHandler(ch)
 logger.setLevel(logging.DEBUG)
 
+
 if __name__ == "__main__":
 
-    if len(sys.argv) != 2:
-        print('Number of Parameters is incorrect.');
+    if len(sys.argv) != 3:
+        print('Number of Parameters is incorrect.')
         exit()
     mStock = MyStock(str(sys.argv[1]), datetime.date.today())
     mStock.InitialData()
     mStock.PandasCandlestickOHLC(MAList = ['ma5', 'ma10', 'ma20'], MVList = ['mv5', 'mv10', 'mv20'])
     mStock.BestFourPoint()
-    print(mStock.Result)
+    mStock.DailyResult(sys.argv[2])

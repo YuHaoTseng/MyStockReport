@@ -1,4 +1,5 @@
 import twstock
+import os
 import datetime
 import pandas as pd
 import numpy as np
@@ -16,6 +17,7 @@ class MyStock:
         self.stock = twstock.Stock(twstock_id)
         self.stock.fetch_from(start.year, start.month - 3)
         self.ID = twstock_id
+        self.Name = twstock.codes[twstock_id].name
         self.RawData = None
         self.DataFrame = None
         self.PNGFilename = '['+ datetime.date.today().strftime("%Y.%m.%d") + '][' + twstock_id + '] Result.png'
@@ -136,3 +138,13 @@ class MyStock:
         self.Result = [bfp.best_four_point_to_buy()]
         self.Result.append(bfp.best_four_point_to_sell())
         self.Result.append(bfp.best_four_point())
+        
+    def DailyResult(self, FilePath):
+        file = open(FilePath, 'w+')
+        file.write("#!/bin/bash\n")
+        file.write("STOCK_ID=" + self.ID + "\n")
+        file.write("STOCK_NAME=" + self.Name + "\n")
+        file.write("STOCK_BFPB=" + str(self.Result[0]) + "\n")
+        file.write("STOCK_BFPS=" + str(self.Result[1]) + "\n")
+        file.write("STOCK_BFP=" + str(self.Result[2]) + "\n")
+        file.close()
