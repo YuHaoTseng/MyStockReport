@@ -144,6 +144,8 @@ class MyStock:
         file.write("#!/bin/bash\n")
         file.write("STOCK_ID=" + self.ID + "\n")
         file.write("STOCK_NAME=" + self.Name + "\n")
+        file.write("STOCK_HIGH=" + str(self.stock.high[-5:]) + "\n")
+        file.write("STOCK_LOW=" + str(self.stock.low[-5:]) + "\n")
         file.write("STOCK_BFPB=" + str(self.Result[0]) + "\n")
         file.write("STOCK_BFPS=" + str(self.Result[1]) + "\n")
         file.write("STOCK_BFP=" + str(self.Result[2]) + "\n")
