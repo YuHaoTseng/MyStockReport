@@ -6,7 +6,7 @@ import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-from mpl_finance import candlestick_ohlc
+from mplfinance.original_flavor import candlestick_ohlc
 from matplotlib.dates import DateFormatter, WeekdayLocator, DayLocator, MONDAY, date2num
 
 MyColumns = ['date', 'open', 'high', 'close', 'low', 'volume', 'ma5', 'ma10', 'ma20', 'mv5', 'mv10', 'mv20']
